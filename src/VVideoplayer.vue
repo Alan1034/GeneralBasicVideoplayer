@@ -42,7 +42,10 @@ export default {
     //   this.autoPlay()
     // })
   },
-  destroyed() {
+  // destroyed() {
+  //   this.closeVideo()
+  // },
+  unmounted() {
     this.closeVideo()
   },
   // watch: {
