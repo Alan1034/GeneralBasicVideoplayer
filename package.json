@@ -46,7 +46,10 @@
   },
   "typings": "./dist/index.d.ts",
   "dependencies": {
-    "video.js": "^8.17.3"
+    "vue-demi": "latest"
+  },
+  "peerDependencies": {
+    "vue": ">=2.7.0 || >=3.0.0"
   },
   "module": "./dist/index.js",
   "exports": {

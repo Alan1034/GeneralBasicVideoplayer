@@ -34,3 +34,4 @@ playerOptions: {
 文档资料：
 https://gitcode.gitcode.host/docs-cn/video.js-docs-cn/index.html
 https://www.npmjs.com/package/video.js
+https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/video
