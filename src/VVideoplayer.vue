@@ -1,5 +1,5 @@
 <template>
-  <video muted ref="video" class="video-js" v-bind="$attrs">
+  <video ref="video" class="video-js" v-bind="$attrs">
     <source v-for="(item, index) in sources" :key="item.src" v-bind="item" />
   </video>
 </template>

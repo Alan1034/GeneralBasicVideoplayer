@@ -6,8 +6,10 @@
 
 ```vue
 import { VVideoplayer } from "general-basic-videoplayer";
+import 'general-basic-videoplayer/style'
 
-<VVideoplayer class="video-player" :sources="sources" :controls='false' muted autoplay loop preload playsinline :player-options="playerOptions">
+<VVideoplayer class="video-player" :controls='false' muted autoplay loop preload :sources="sources"
+  playsinline :player-options="playerOptions">
 </VVideoplayer>
 
 sources: [{
@@ -15,8 +17,8 @@ sources: [{
     type: "video/mp4"
 }],
 playerOptions: {
-    fluid: true,
-    autoplay: true,
+    // fluid: true,
+    height: window.innerHeight,
     userActions: {
         click: false,
         doubleClick: false,
@@ -29,3 +31,6 @@ playerOptions: {
 }
 ```
 
+文档资料：
+https://gitcode.gitcode.host/docs-cn/video.js-docs-cn/index.html
+https://www.npmjs.com/package/video.js
