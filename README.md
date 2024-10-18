@@ -28,6 +28,7 @@ playerOptions: {
 
 .video-player {
     background-color: #ECEEF0;
+    // transform: scale(1.19);
 }
 ```
 
