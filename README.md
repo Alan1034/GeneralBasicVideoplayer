@@ -2,7 +2,7 @@
 
 基于video.js封装的视频播放器
 
-支持Vue3
+支持Vue3和Vue2，vue2请使用@1版本，Vue3请使用@2版本
 
 ```vue
 import { VVideoplayer } from "general-basic-videoplayer";
