@@ -27,7 +27,9 @@ playerOptions: {
 },
 
 .video-player {
-    background-color: #ECEEF0;
+   background-color: rgb(233, 235, 239);
+   height: inherit;
+   transform: scale(1.19);
 }
 ```
 
