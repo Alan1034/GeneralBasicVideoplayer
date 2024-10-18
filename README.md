@@ -17,7 +17,7 @@ sources: [{
     type: "video/mp4"
 }],
 playerOptions: {
-    // fluid: true,
+    // fill: true,
     height: window.innerHeight,
     userActions: {
         click: false,
