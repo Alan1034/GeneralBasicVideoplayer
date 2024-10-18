@@ -1,18 +1,8 @@
-/*
- * @Author: 陈德立*******419287484@qq.com
- * @Date: 2024-09-02 15:42:13
- * @LastEditTime: 2024-09-02 15:53:29
- * @LastEditors: 陈德立*******419287484@qq.com
- * @Github: https://github.com/Alan1034
- * @Description: 
- * @FilePath: \v-videoplayer\vite.config.js
- * 
- */
 import legacy from '@vitejs/plugin-legacy'
 import { fileURLToPath } from 'url'
 import { defineConfig, loadEnv } from 'vite'
-import vue from '@vitejs/plugin-vue'
-import vueJsx from '@vitejs/plugin-vue-jsx'
+import vue from '@vitejs/plugin-vue2'
+import vueJsx from '@vitejs/plugin-vue2-jsx'
 import { ViteImageOptimizer } from 'vite-plugin-image-optimizer';
 import path from 'path';
 const __filenameNew = fileURLToPath(import.meta.url)
@@ -43,9 +33,7 @@ export default defineConfig(({ command, mode }) => {
 
       extensions: ['.mjs', '.js', '.ts', '.jsx', '.tsx', '.json', '.vue'],
     },
-    optimizeDeps: {
-      exclude: ['vue-demi']
-   },
+
     plugins: [
       /**
        * @description: 图片压缩插件

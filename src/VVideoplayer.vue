@@ -1,82 +1,107 @@
+<!--
+ * @Author: 陈德立*******419287484@qq.com
+ * @Date: 2024-10-18 09:35:53
+ * @LastEditTime: 2024-10-18 15:30:54
+ * @LastEditors: 陈德立*******419287484@qq.com
+ * @Github: https://github.com/Alan1034
+ * @Description: 
+ * @FilePath: \GeneralBasicVideoplayer\src\VVideoplayer.vue
+ * 
+-->
 <template>
   <video ref="video" class="video-js" v-bind="$attrs">
-    <source v-for="(item,) in sources" :key="item.src" v-bind="item" />
+    <source v-for="(item, index) in sources" :key="item.src" v-bind="item" />
   </video>
 </template>
-<script lang="ts" setup>
+<script>
 import videojs from "video.js";
 import "video.js/dist/video-js.css";
-import { ref, onMounted, onUnmounted, useAttrs } from 'vue-demi'
-interface Props {
-  sources: any[]
-  playerOptions?: {
-    autoplay?: Boolean
-  }
-}
+export default {
+  props: {
+    sources: {
+      type: Array,
+      default: () => []
+    },
 
-const props = defineProps<Props>()
-const player = ref(null) // 用来存储当前 video
-const video = ref()
-const attrs = useAttrs()
-onMounted(() => {
-  // 渲染视频
-  player.value = videojs(video.value, { ...props.playerOptions }
-    // , function onPlayerReady() {
-    //   videojs.log('Your player is ready!');
+    playerOptions: {
+      type: Object,
+      default: () => { }
+    }
+  },
+  data() {
+    return {
+      player: null, // 用来存储当前 video
+    };
+  },
+  mounted() { // 渲染视频
+    this.player = videojs(this.$refs.video, { ...this.playerOptions }
+      // , function onPlayerReady() {
+      //   videojs.log('Your player is ready!');
 
-    //   // In this context, `this` is the player that was created by Video.js.
-    //   console.log(this)
-    //   // this.play();
-    //   // How about an event listener?
-    //   this.on('ended', function () {
-    //     videojs.log('Awww...over so soon?!');
-    //   });
-    // }
-  );
-  // console.log(player.value)
-  // player.value.ready(() => {
-  //   this.autoPlay()
-  // })
-})
-onUnmounted(() => {
-  closeVideo()
-})
-/**
-  * @description: 部分浏览器不能自动播放，要手动调用一下
-  * @return {*}
-  */
-const autoPlay = () => {
-  if (!player.value) {
-    return
-  }
-  if (!(props.playerOptions?.autoplay || attrs.autoplay)) {
-    return
-  }
-  const promise = player.value.play();
-  if (promise !== undefined) {
-    promise.then(function () {
-      console.info("Autoplay started!")
-      // Autoplay started!
-    }).catch(function (error) {
-      // Autoplay was prevented.
-      console.warn("Autoplay was prevented.", error)
-    });
-  }
+      //   // In this context, `this` is the player that was created by Video.js.
+      //   console.log(this)
+      //   // this.play();
+      //   // How about an event listener?
+      //   this.on('ended', function () {
+      //     videojs.log('Awww...over so soon?!');
+      //   });
+      // }
+    );
+    // console.log(this.player)
+    // this.player.ready(() => {
+    //   this.autoPlay()
+    // })
+  },
+  destroyed() {
+    this.closeVideo()
+  },
+  // watch: {
+  //   "$route": function (val, oldVal) {
+  //     this.autoPlay()
+  //   }
+  // },
+  // updated() {
+  //   console.log("updated")
+
+  // },
+  methods: {
+    /**
+     * @description: 部分浏览器不能自动播放，要手动调用一下
+     * @return {*}
+     */
+    autoPlay() {
+      if (!this.player) {
+        return
+      }
+      if (!(this.playerOptions.autoplay || this.$attrs.autoplay)) {
+        return
+      }
+      const promise = this.player.play();
+      if (promise !== undefined) {
+        promise.then(function () {
+          console.info("Autoplay started!")
+          // Autoplay started!
+        }).catch(function (error) {
+          // Autoplay was prevented.
+          console.warn("Autoplay was prevented.", error)
+        });
+      }
+    },
+    closeVideo() {
+      if (this.player != null) {
+        this.player.pause() //关闭
+        this.player.dispose();//销毁
+        this.player = null
+      }
+    },
+    resetVideo() {
+      if (this.player != null) {
+        this.player.pause()//暂停
+        this.player.currentTime(0)//复位
+      }
+    },
+  },
 }
-const closeVideo = () => {
-  if (player.value != null) {
-    player.value.pause() //关闭
-    player.value.dispose();//销毁
-    player.value = null
-  }
-}
-const resetVideo = () => {
-  if (player.value != null) {
-    player.value.pause()//暂停
-    player.value.currentTime(0)//复位
-  }
-}
-defineExpose({ autoPlay, closeVideo, resetVideo })
 </script>
 <style lang="">
 
