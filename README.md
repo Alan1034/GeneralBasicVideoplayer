@@ -32,7 +32,20 @@ playerOptions: {
 }
 ```
 
+动态设置URL和封面图
+  created() {
+    const { url = "", coverRelativeUrl } = this.$route.query;
+    const baseUrl = "https://lumian-1330789281.cos.ap-guangzhou.myqcloud.com"
+    this.sources = [{
+      src: baseUrl + decodeURIComponent(url),
+      type: "video/mp4"
+    }]
+    this.playerOptions.poster = baseUrl + decodeURIComponent(coverRelativeUrl)
+  }
+
 文档资料：
 https://www.npmjs.com/package/video.js
+
+https://www.hxstrive.com/subject/video_js/2677.htm
 
 https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/video
