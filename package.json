@@ -42,7 +42,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/Alan1034/VueNpmFrame.git"
+    "url": "git+https://github.com/Alan1034/GeneralBasicVideoplayer#"
   },
   "typings": "./dist/index.d.ts",
   "dependencies": {
