@@ -58,7 +58,7 @@
       "import": "./dist/index.js",
       "require": "./dist/index.umd.cjs"
     },
-    "./style": "./dist/style.css"
+    "./style": "./dist/index.css"
   },
   "files": [
     "/dist"

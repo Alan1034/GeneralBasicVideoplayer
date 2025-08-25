@@ -34,7 +34,7 @@ const updateMain = () => {
         import: esDir,
         require: umdDir,
       },
-      "./style": "./dist/style.css",
+      "./style": "./dist/index.css",
     };
     packageJson.typings = types;
     packageJson.files = ["/dist"];
