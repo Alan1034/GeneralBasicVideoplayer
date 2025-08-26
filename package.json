@@ -46,6 +46,7 @@
   },
   "typings": "./dist/index.d.ts",
   "dependencies": {
+    "tcplayer.js": "^5.3.4",
     "vue-demi": "latest"
   },
   "peerDependencies": {
